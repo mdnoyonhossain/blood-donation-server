@@ -8,7 +8,10 @@ import globalErrorHandler from "./app/middleware/globalErrorHandler";
 const app = express();
 
 // middlewares
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  credentials: true,
+}));
 app.use(express.json());
 app.use("/api", router);
 

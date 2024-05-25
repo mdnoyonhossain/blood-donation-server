@@ -21,6 +21,8 @@ donationRequest.put(
 const donorList = express.Router();
 
 donorList.get("/", DonationController.getDonorList);
+donorList.get("/:id", DonationController.getDonorByIdFromDB);
+
 
 export const DonationRequestRoute = donationRequest;
 export const DonorListRoute = donorList;

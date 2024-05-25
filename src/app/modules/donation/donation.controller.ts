@@ -67,9 +67,22 @@ const getDonorList = catchAsync(async (req, res) => {
   });
 });
 
+const getDonorByIdFromDB = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await DonationService.getDonorByIdFromDB(id);
+
+  sendResponse(res, false, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Donation Id or Info retrieved successfully",
+    data: result,
+  });
+});
+
 export const DonationController = {
   donationRequest,
   getAllDonationRequest,
   updateDonationRequest,
   getDonorList,
+  getDonorByIdFromDB
 };

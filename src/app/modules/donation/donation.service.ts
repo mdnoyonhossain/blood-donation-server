@@ -54,6 +54,7 @@ const getAllDonationRequest = async (user: TJWTPayload) => {
     },
     include: {
       requester: true,
+      donor: true
     },
   });
 
@@ -171,9 +172,24 @@ const getDonorList = async (query: TDonorListQueryParam, metaData: TMetaOptions)
   };
 };
 
+const getDonorByIdFromDB = async (id: string) => {
+  const result = await prisma.user.findUniqueOrThrow({
+    where: {
+      id,
+    },
+    include: {
+      userProfile: true,
+      requestsAsDonor: true,
+      requestsAsRequester: true
+    },
+  });
+  return result;
+};
+
 export const DonationService = {
   donationRequest,
   getAllDonationRequest,
   updateDonationRequest,
   getDonorList,
+  getDonorByIdFromDB
 };

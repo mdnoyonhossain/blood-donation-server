@@ -19,6 +19,13 @@ const getMyProfile = async (payload: TJWTPayload) => {
       createdAt: true,
       updatedAt: true,
       userProfile: true,
+      requestsAsDonor: true,
+      requestsAsRequester: {
+        include: {
+          requester: true,
+          donor: true
+        }
+      }
     },
   });
 
