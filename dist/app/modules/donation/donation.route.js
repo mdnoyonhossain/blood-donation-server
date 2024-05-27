@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DonorListRoute = exports.DonationRequestRoute = void 0;
+const express_1 = __importDefault(require("express"));
+const auth_1 = __importDefault(require("../../middleware/auth"));
+const donation_controller_1 = require("./donation.controller");
+const validateRequest_1 = __importDefault(require("../../middleware/validateRequest"));
+const donation_validation_1 = require("./donation.validation");
+const client_1 = require("@prisma/client");
+const donationRequest = express_1.default.Router();
+donationRequest.post("/", (0, auth_1.default)(client_1.UserRole.ADMIN, client_1.UserRole.USER), donation_controller_1.DonationController.donationRequest);
+donationRequest.get("/", (0, auth_1.default)(client_1.UserRole.ADMIN, client_1.UserRole.USER), donation_controller_1.DonationController.getAllDonationRequest);
+donationRequest.put("/:requestId", (0, auth_1.default)(client_1.UserRole.ADMIN, client_1.UserRole.USER), (0, validateRequest_1.default)(donation_validation_1.DonationValidation.updateDonationRequestValidationSchema), donation_controller_1.DonationController.updateDonationRequest);
+const donorList = express_1.default.Router();
+donorList.get("/", donation_controller_1.DonationController.getDonorList);
+donorList.get("/:id", donation_controller_1.DonationController.getDonorByIdFromDB);
+exports.DonationRequestRoute = donationRequest;
+exports.DonorListRoute = donorList;
