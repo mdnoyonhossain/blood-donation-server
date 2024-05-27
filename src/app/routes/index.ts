@@ -1,5 +1,5 @@
 import express from "express";
-import { RegistrationRoute, changePasswordRoute, loginRoute } from "../modules/auth/auth.route";
+import { AllUserRoute, RegistrationRoute, changePasswordRoute, loginRoute, updateUserRoutes } from "../modules/auth/auth.route";
 import { ProfileRoute } from "../modules/profile/profile.route";
 import { DonationRequestRoute, DonorListRoute } from "../modules/donation/donation.route";
 
@@ -29,6 +29,14 @@ const routes = [
   {
     path: "/donor-list",
     router: DonorListRoute,
+  },
+  {
+    path: "/all-user",
+    router: AllUserRoute,
+  },
+  {
+    path: "/update-user-staus",
+    router: updateUserRoutes,
   },
 ];
 

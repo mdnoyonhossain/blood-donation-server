@@ -27,6 +27,14 @@ changePassword.post(
   AuthController.changePassword
 );
 
+const allUser = express.Router();
+allUser.get("/", auth(UserRole.ADMIN), AuthController.getAllUser)
+
+const updateUser = express.Router();
+updateUser.put("/:id", auth(UserRole.ADMIN), AuthController.updateUserStatus)
+
 export const RegistrationRoute = registration;
 export const loginRoute = login;
 export const changePasswordRoute = changePassword;
+export const AllUserRoute = allUser;
+export const updateUserRoutes = updateUser;

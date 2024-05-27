@@ -7,6 +7,9 @@ CREATE TYPE "RequestStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
 -- CreateEnum
 CREATE TYPE "UserRole" AS ENUM ('ADMIN', 'USER');
 
+-- CreateEnum
+CREATE TYPE "UserStatus" AS ENUM ('ACTIVATE', 'DEACTIVATE');
+
 -- CreateTable
 CREATE TABLE "user" (
     "id" TEXT NOT NULL,
@@ -14,6 +17,7 @@ CREATE TABLE "user" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
+    "userStatusChange" "UserStatus" NOT NULL DEFAULT 'ACTIVATE',
     "bloodType" "BloodType" NOT NULL,
     "location" TEXT NOT NULL,
     "availability" BOOLEAN NOT NULL DEFAULT false,

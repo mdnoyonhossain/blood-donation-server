@@ -14,6 +14,7 @@ model User {
   email               String       @unique
   password            String
   role                UserRole     @default(USER)
+  userStatusChange        UserStatus   @default(ACTIVATE)
   bloodType           BloodType
   location            String
   availability        Boolean      @default(false)
@@ -78,4 +79,9 @@ enum RequestStatus {
 enum UserRole {
   ADMIN
   USER
+}
+
+enum UserStatus {
+  ACTIVATE
+  DEACTIVATE
 }

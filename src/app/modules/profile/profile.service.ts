@@ -33,10 +33,7 @@ const getMyProfile = async (payload: TJWTPayload) => {
 };
 
 // update my profile
-const updateMyProfile = async (
-  payload: Partial<UserProfile>,
-  user: TJWTPayload
-) => {
+const updateMyProfile = async (payload: Partial<UserProfile>, user: TJWTPayload) => {
   const result = await prisma.userProfile.update({
     where: {
       userId: user.id,

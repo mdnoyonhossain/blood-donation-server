@@ -5,6 +5,7 @@ import prisma from "../../utils/prismaClient";
 import { TLogin, TRegistration } from "./auth.types";
 import bcrypt from "bcrypt";
 import { jwtHelpers } from "../../utils/jwtHelpers";
+import { User } from "@prisma/client";
 
 // registration
 const registration = async (payload: TRegistration) => {
@@ -64,6 +65,7 @@ const registration = async (payload: TRegistration) => {
         createdAt: true,
         updatedAt: true,
         userProfile: true,
+        userStatusChange: true
       },
     });
   });
@@ -129,8 +131,29 @@ const changePassword = async (user: any, payload: any) => {
   }
 }
 
+const getAllUser = async () => {
+  const result = await prisma.user.findMany();
+  return result;
+}
+
+const updateUserStatus = async (id: string, payload: Partial<User>) => {
+  const { role, userStatusChange } = payload;
+
+  const updatedUser = await prisma.user.update({
+    where: { id: id },
+    data: {
+      role: role,
+      userStatusChange: userStatusChange
+    }
+  });
+
+  return updatedUser
+};
+
 export const AuthService = {
   registration,
   login,
-  changePassword
+  changePassword,
+  getAllUser,
+  updateUserStatus
 };
