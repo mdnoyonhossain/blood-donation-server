@@ -9,7 +9,7 @@ const app = express();
 
 // middlewares
 app.use(cors({
-  origin: ['**', 'https://smartlinker.netlify.app', '*'],
+  origin: ['**', 'https://smartlinker.netlify.app'],
   credentials: true,
 }));
 app.use(express.json());
