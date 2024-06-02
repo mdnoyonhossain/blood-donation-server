@@ -29,7 +29,7 @@ Database Tables:
    Manages blood donation requests, tracking donor and requester information, as well as request status.
 
 3. **profile:**
-   Stores user profile information, including bio, age, and last donation date.
+   Stores user profile information, including bio, age, and last donation date
 
 ## Technology Used
 
