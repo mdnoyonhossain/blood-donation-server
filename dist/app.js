@@ -12,7 +12,7 @@ const globalErrorHandler_1 = __importDefault(require("./app/middleware/globalErr
 const app = (0, express_1.default)();
 // middlewares
 app.use((0, cors_1.default)({
-    origin: ['http://localhost:3000', 'http://localhost:3001', '**'],
+    origin: ['**', 'https://smartlinker.netlify.app', '*'],
     credentials: true,
 }));
 app.use(express_1.default.json());
