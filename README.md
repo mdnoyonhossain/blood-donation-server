@@ -61,7 +61,7 @@ To test the live API endpoints, I prefer using [Postman](https://www.postman.com
 ### Live API
 
 ```bash
-# https://blood-donation-server-by-adnan-sarkar.vercel.app/
+https://blood-donation-server-orpin.vercel.app/
 ```
 
 ## API Endpoints
@@ -140,11 +140,5 @@ npm run start
 ```bash
 node ./dist/server.js
 ```
-
-<br><br>
-
-Thank you for exploring the `Blood Donation Server` backend application! Feel free to provide feedback, report issues.
-
-## 📢 Social Links
 
 
